@@ -2,7 +2,10 @@ package main.graphics;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
+
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+
 import main.data.Event;
 import main.data.Hall;
 import main.util.Log;
@@ -19,7 +22,7 @@ import main.util.Log;
  * miejsc, zrobienie jakiegos menu. Nie robilem tego, bo chce zobaczyc, czy
  * takie podejscie jest wogole wedlug Was sensowne.
  */
-public class GridFrame extends JFrame {
+public class GridPanel extends JPanel {
 
 	ArrayList<Event> eventList;
 	int rows;
@@ -28,9 +31,9 @@ public class GridFrame extends JFrame {
 	float usageTable[][];
 	int timesSeatTaken[][];
 
-	public GridFrame(Hall hall) {
+	public GridPanel(Hall hall) {
 		super();
-		Log.post("Initialize GridFrame");
+		Log.post("Initialize GridPanel");
 
 		// save parameters
 		eventList = hall.getEventList();
@@ -44,8 +47,7 @@ public class GridFrame extends JFrame {
 		setupGrid();
 
 		// show
-		setTitle("GridFrame");
-		setSize(800, 400);
+		setSize(maxSeatsInRow*50,rows*50);
 		setVisible(true);
 	}
 

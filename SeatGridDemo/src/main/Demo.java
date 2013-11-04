@@ -5,7 +5,8 @@ import java.util.GregorianCalendar;
 
 import main.data.Event;
 import main.data.Hall;
-import main.graphics.GridFrame;
+import main.graphics.GridPanel;
+import main.graphics.HallFrame;
 
 /**
  * Klasa demostracyjna. Posiada tylko metode main, by uruchomic pokaz dzialania
@@ -106,7 +107,7 @@ public class Demo {
 		testHall.addEvent(event);
 
 		// run grid
-		GridFrame testGrid = new GridFrame(testHall);
+		HallFrame testFrame = new HallFrame(testHall);
 	}
 
 }
