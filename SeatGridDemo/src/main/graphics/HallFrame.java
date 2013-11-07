@@ -12,24 +12,32 @@ public class HallFrame extends JFrame {
 	 */
 	
 	private Hall hall;
-	private GridPanel grid;
+	private SeatGridPanel grid;
 	private static final long serialVersionUID = 1L;
 
 	public HallFrame(Hall hall) {
 		super();
 		Log.post("Initialize HallFrame");
 		
-		this.hall = hall;
+		this.setHall(hall);
 		setSize(800, 400);
 		setTitle("HallFrame");
 		setLocationRelativeTo(null);
 		
 		//add grid
-		grid = new GridPanel(hall);
+		grid = new SeatGridPanel(hall);
 		add(grid);
 		grid.setLocation(0, 0);
 		
 		setVisible(true);
+	}
+
+	public Hall getHall() {
+		return hall;
+	}
+
+	public void setHall(Hall hall) {
+		this.hall = hall;
 	}
 
 }

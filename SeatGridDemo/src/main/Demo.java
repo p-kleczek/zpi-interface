@@ -5,8 +5,9 @@ import java.util.GregorianCalendar;
 
 import main.data.Event;
 import main.data.Hall;
-import main.graphics.GridPanel;
+import main.graphics.SeatGridPanel;
 import main.graphics.HallFrame;
+import main.graphics.MainFrame;
 
 /**
  * Klasa demostracyjna. Posiada tylko metode main, by uruchomic pokaz dzialania
@@ -20,6 +21,8 @@ public class Demo {
 	public static void main(String[] args) {
 
 		// basic setup
+		
+		ArrayList<Hall> hallList = new ArrayList<Hall>();
 		Hall testHall = new Hall("H24", 5, 10);
 		Event event;
 		ArrayList<String> seatLayout;
@@ -105,9 +108,12 @@ public class Demo {
 		event = new Event(eventId++, seatLayout);
 		event.setDate(new GregorianCalendar(2013, 10, 1, 14, 30));
 		testHall.addEvent(event);
+		
+		hallList.add(testHall);
 
 		// run grid
-		HallFrame testFrame = new HallFrame(testHall);
+		//HallFrame testFrame = new HallFrame(testHall);
+		MainFrame mainFrame = new MainFrame(hallList);
 	}
 
 }

@@ -28,7 +28,7 @@ public class Event {
 
 	private String hallId;
 	private int eventId;
-	private Calendar date;
+	private String date;
 	private String administrator;
 	private ArrayList<String> seatLayout;
 
@@ -88,12 +88,14 @@ public class Event {
 		this.eventId = eventId;
 	}
 
-	public Calendar getDate() {
+	public String getDate() {
 		return date;
 	}
 
 	public void setDate(Calendar date) {
-		this.date = date;
+		this.date = "" + date.get(Calendar.DAY_OF_MONTH) + "-"
+				+ (date.get(Calendar.MONTH) + 1) + "-"
+				+ date.get(Calendar.YEAR);
 	}
 
 }

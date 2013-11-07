@@ -28,6 +28,7 @@ public class Hall {
 	}
 
 	public void addEvent(Event event) {
+		event.setHallId(hallId);
 		eventList.add(event);
 	}
 
