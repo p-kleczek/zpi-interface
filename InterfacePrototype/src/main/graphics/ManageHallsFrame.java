@@ -1,14 +1,9 @@
 package main.graphics;
 
-import java.awt.Dimension;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
 
 import main.data.Hall;
 import main.util.Log;

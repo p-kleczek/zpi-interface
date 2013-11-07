@@ -5,8 +5,6 @@ import java.util.GregorianCalendar;
 
 import main.data.Event;
 import main.data.Hall;
-import main.graphics.SeatGridPanel;
-import main.graphics.HallFrame;
 import main.graphics.MainFrame;
 
 /**
@@ -111,9 +109,9 @@ public class Demo {
 		
 		hallList.add(testHall);
 
-		// run grid
-		//HallFrame testFrame = new HallFrame(testHall);
-		MainFrame mainFrame = new MainFrame(hallList);
+		// run test
+		new MainFrame(hallList);
+		
 	}
 
 }

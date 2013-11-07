@@ -8,34 +8,30 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import main.data.Event;
 import main.data.Hall;
 import main.util.Strings;
 
-public class EventsTablePanel extends JPanel {
+public class HallsTablePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Event> eventList;
+	private ArrayList<Hall> hallList;
 	final JTable table;
 
-	public EventsTablePanel(ArrayList<Event> list) {
+	public HallsTablePanel(ArrayList<Hall> list) {
 		super();
 		setLayout(new BorderLayout());
-		eventList = list;
+		hallList = list;
 
 		// tworzenie danych do tabeli
-		String[] columnNames = { Strings.HEADER_HALL_ID,
-				Strings.HEADER_EVENT_ID, Strings.HEADER_EVENT_DATE,
-				Strings.HEADER_EVENT_ADMINISTRATOR };
-		int size = eventList.size();
-		Object[][] data = new Object[size][4];
+		String[] columnNames = {Strings.HEADER_HALL_ID, Strings.HEADER_HALL_MAX };
+		int size = hallList.size();
+		Object[][] data = new Object[size][2];
 		for (int i = 0; i < size; i++) {
-			data[i][0] = eventList.get(i).getHallId();
-			data[i][1] = eventList.get(i).getEventId();
-			data[i][2] = eventList.get(i).getDate();
-			data[i][3] = eventList.get(i).getAdministrator();
+			data[i][0] = hallList.get(i).getHallId();
+			data[i][1] = "" + hallList.get(i).getRows()
+					* hallList.get(i).getSeatsInRow();
 		}
-
+		
 		// tworzenie tabeli
 		table = new JTable(data, columnNames);
 		table.setPreferredScrollableViewportSize(new Dimension(300, 400));
@@ -45,4 +41,5 @@ public class EventsTablePanel extends JPanel {
 
 		setVisible(true);
 	}
+
 }
