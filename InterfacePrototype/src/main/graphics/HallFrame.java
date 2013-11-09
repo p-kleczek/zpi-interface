@@ -4,6 +4,7 @@ import javax.swing.JFrame;
 
 import main.data.Hall;
 import main.util.Log;
+import main.util.Strings;
 
 public class HallFrame extends JFrame {
 
@@ -21,7 +22,7 @@ public class HallFrame extends JFrame {
 		
 		this.setHall(hall);
 		setSize(800, 400);
-		setTitle("HallFrame");
+		setTitle(Strings.TITLE_SEAT_GRID);
 		setLocationRelativeTo(null);
 		
 		//add grid

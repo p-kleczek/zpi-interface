@@ -23,6 +23,7 @@ public class ManageEventsFrame extends JFrame {
 	JButton editButton;
 	JButton loadButton;
 	EventsTablePanel tablePanel;
+	EventDetailPanel detailsPanel;
 
 	public ManageEventsFrame(ArrayList<Hall> list) {
 		super();
@@ -31,7 +32,7 @@ public class ManageEventsFrame extends JFrame {
 		Log.post("Initialize ManageEventsFrame");
 
 		setSize(800, 600);
-		setTitle("Manage Events");
+		setTitle(Strings.TITLE_EVENTS);
 		setLayout(null);
 
 		eventList = new ArrayList<Event>();
@@ -44,32 +45,43 @@ public class ManageEventsFrame extends JFrame {
 		addButton = new JButton(Strings.BUTTON_ADD);
 		addButton.setSize(100, 50);
 		add(addButton);
-		addButton.setLocation(50, 50);
+		addButton.setLocation(25, 25);
 
 		removeButton = new JButton(Strings.BUTTON_REMOVE);
 		removeButton.setSize(100, 50);
 		add(removeButton);
-		removeButton.setLocation(200, 50);
+		removeButton.setLocation(150, 25);
 
 		editButton = new JButton(Strings.BUTTON_EDIT);
 		editButton.setSize(100, 50);
 		add(editButton);
-		editButton.setLocation(350, 50);
+		editButton.setLocation(275, 25);
 
 		loadButton = new JButton(Strings.BUTTON_LOAD);
-		loadButton.setSize(250, 50);
+		loadButton.setSize(200, 50);
 		add(loadButton);
-		loadButton.setLocation(500, 50);
-		
-		//dodanie tabeli
-		tablePanel = new EventsTablePanel(eventList);
+		loadButton.setLocation(575, 25);
+
+		// dodanie tabeli
+		tablePanel = new EventsTablePanel(this, eventList);
 		tablePanel.setOpaque(true);
-		tablePanel.setSize(500,400);
+		tablePanel.setSize(475, 450);
 		add(tablePanel);
-		tablePanel.setLocation(50, 150);
+		tablePanel.setLocation(25, 100);
+
+		// dodaj pole szczegolow
+		detailsPanel = new EventDetailPanel();
+		detailsPanel.setOpaque(true);
+		detailsPanel.setSize(250, 325);
+		add(detailsPanel);
+		detailsPanel.setLocation(525, 100);
 
 		setResizable(false);
 		setVisible(true);
 	}
 
+	public void setDetailText(int eventIndex){
+		detailsPanel.setupText(eventList.get(eventIndex));
+		repaint();
+	}
 }

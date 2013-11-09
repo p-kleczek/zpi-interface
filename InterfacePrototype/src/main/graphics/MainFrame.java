@@ -30,7 +30,7 @@ public class MainFrame extends JFrame{
 		this.hallList = list;
 		
 		setSize(600, 300);
-		setTitle("MainFrame");
+		setTitle(Strings.TITLE_MAIN);
 		setLayout(null);
 		//setLocationRelativeTo(null);
 		

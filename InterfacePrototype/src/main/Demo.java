@@ -5,6 +5,7 @@ import java.util.GregorianCalendar;
 
 import main.data.Event;
 import main.data.Hall;
+import main.graphics.HallFrame;
 import main.graphics.MainFrame;
 
 /**
@@ -109,8 +110,11 @@ public class Demo {
 		
 		hallList.add(testHall);
 
-		// run test
+		// run menu
 		new MainFrame(hallList);
+		
+		// run grid
+		//new HallFrame(testHall);
 		
 	}
 
