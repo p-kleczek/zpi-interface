@@ -2,6 +2,7 @@ package grid;
 
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -87,6 +88,7 @@ public class ButtonPanel extends JPanel{
 				}
 				else{
 					gridPanel.getDataModel().setRowsAndCols(rowsSpin.getValue(), columnsSpin.getValue());
+					gridPanel.getDataModel().calculatePoints();
 					imagePanel.generateGrid();
 				}
 			}
@@ -100,6 +102,8 @@ public class ButtonPanel extends JPanel{
 		okButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				gridPanel.getDataModel().setRowsAndCols(rowsSpin.getValue(), columnsSpin.getValue());
+				gridPanel.getDataModel().calculatePoints();
+				gridPanel.getDataModel().printPoints();
 				gridPanel.getDataModel().saveToDb();
 				System.out.println("Ok");
 			}
