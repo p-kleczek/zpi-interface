@@ -10,11 +10,14 @@ import main.data.Hall;
 import main.util.Log;
 import main.util.Strings;
 
+/**
+ * Glowny frame dla widoku eventow. 
+ * @author Mateusz
+ *
+ */
+
 public class ManageEventsFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Event> eventList;
 	private ArrayList<Hall> hallList;

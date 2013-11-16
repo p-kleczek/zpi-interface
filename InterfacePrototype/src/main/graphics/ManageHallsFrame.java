@@ -12,11 +12,13 @@ import main.data.Hall;
 import main.util.Log;
 import main.util.Strings;
 
+/**
+ * Glowny frame dla widoku sal.
+ * @author Mateusz
+ *
+ */
 public class ManageHallsFrame extends JFrame {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Hall> hallList;
 	private JButton addButton;

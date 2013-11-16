@@ -17,6 +17,15 @@ import main.data.Hall;
 import main.util.Log;
 import main.util.Strings;
 
+/**
+ * Analogiczne dzialanie do EventTablePanel. Dodatkowa funkcja to pokazanie
+ * przycisku wyswietlajacego HallFrame gdy uzytkownik kliknie na element
+ * tabeli.
+ * 
+ * @author Mateusz
+ * 
+ */
+
 public class HallsTablePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;
@@ -45,6 +54,7 @@ public class HallsTablePanel extends JPanel {
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
+
 			public boolean isCellEditable(int rowIndex, int colIndex) {
 				return false; // Disallow the editing of any cell
 			}

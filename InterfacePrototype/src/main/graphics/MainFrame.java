@@ -12,12 +12,14 @@ import main.util.Log;
 import main.util.Strings;
 
 /**
- * Klasa glowna widoku. Program zaczyna od tego frame'a.
+ * Klasa glowna widoku. Program zaczyna od tego frame'a. Tylko dwie opcje: widok
+ * sal i eventow.
+ * 
  * @author Mateusz
- *
+ * 
  */
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	ArrayList<Hall> hallList;
@@ -28,18 +30,18 @@ public class MainFrame extends JFrame{
 		super();
 		Log.post("Initialize MainFrame");
 		this.hallList = list;
-		
+
 		setSize(600, 300);
 		setTitle(Strings.TITLE_MAIN);
 		setLayout(null);
-		//setLocationRelativeTo(null);
-		
-		//initialize buttons
+		// setLocationRelativeTo(null);
+
+		// initialize buttons
 		eventsButton = new JButton(Strings.BUTTON_EVENTS);
 		eventsButton.setSize(200, 50);
 		add(eventsButton);
 		eventsButton.setLocation(50, 100);
-		eventsButton.addMouseListener(new MouseListener(){
+		eventsButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -68,12 +70,12 @@ public class MainFrame extends JFrame{
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		hallsButton = new JButton(Strings.BUTTON_HALLS);
 		hallsButton.setSize(200, 50);
 		add(hallsButton);
 		hallsButton.setLocation(350, 100);
-		hallsButton.addMouseListener(new MouseListener(){
+		hallsButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -102,13 +104,12 @@ public class MainFrame extends JFrame{
 				// TODO Auto-generated method stub
 			}
 		});
-		
-		
-		//add grid
-		//grid = new GridPanel(hall);
-		//add(grid);
-		//grid.setLocation(0, 0);
-		
+
+		// add grid
+		// grid = new GridPanel(hall);
+		// add(grid);
+		// grid.setLocation(0, 0);
+
 		setResizable(false);
 		setVisible(true);
 	}

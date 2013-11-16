@@ -12,6 +12,11 @@ import javax.swing.JTextArea;
 import main.data.Hall;
 import main.util.Strings;
 
+/**
+ * Analogiczne dzialanie do EventDetailPanel.
+ * @author Mateusz
+ *
+ */
 public class HallDetailPanel extends JPanel{
 
 	private static final long serialVersionUID = 1L;

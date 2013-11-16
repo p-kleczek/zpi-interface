@@ -15,6 +15,14 @@ import javax.swing.table.DefaultTableModel;
 import main.data.Event;
 import main.util.Strings;
 
+/**
+ * JPanel zawierajacy tabele z eventami. Klikanie odpowiednich elementow
+ * uruchamia wyswietlanie szczegolow na innym panelu (EventDetailPanel).
+ * 
+ * @author Mateusz
+ * 
+ */
+
 public class EventsTablePanel extends JPanel {
 
 	private static final long serialVersionUID = 1L;

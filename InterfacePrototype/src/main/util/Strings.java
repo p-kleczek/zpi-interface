@@ -1,7 +1,14 @@
 package main.util;
 
 public class Strings {
-	
+
+	/**
+	 * Tutaj pakujemy wsyztskie teksty wyswietlane w programie. Pakowanie
+	 * stringow w jednym miejscu ulatwi potem ewentulna konwersje na inny jezyk
+	 * i pozwoli szybko znalezc literowki lub wprowadzic zmiany jelsi komus sie
+	 * nie spodoba wyswietlany tekst.
+	 */
+
 	// tytuly frame'ow
 	public static final String TITLE_MAIN = "Menu g³ówne";
 	public static final String TITLE_EVENTS = "Zarz¹dzaj eventami";
