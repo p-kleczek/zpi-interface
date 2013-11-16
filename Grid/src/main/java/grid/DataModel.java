@@ -18,12 +18,14 @@ public class DataModel {
 	private Point leftBottomPoint;
 	private Point rightTopPoint;
 	private Point rightBottomPoint;
+	private double WSP;
 	
 	public DataModel(){
 		newPointList();
 		loadImage();
 		rows = 0;
 		cols = 0;
+		WSP = 0;
 	}
 	
 	private void loadImage(){
@@ -143,6 +145,14 @@ public class DataModel {
 
 	public Point getRightBottomPoint() {
 		return rightBottomPoint;
+	}
+
+	public double getWSP() {
+		return WSP;
+	}
+
+	public void setWSP(Object wSP) {
+		WSP = (Double)wSP;
 	}
 
 }

@@ -2,7 +2,6 @@ package grid;
 
 import java.awt.Component;
 import java.awt.Dimension;
-import java.awt.Point;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -23,10 +22,13 @@ public class ButtonPanel extends JPanel{
 	private GridPanel gridPanel;
 	private ImagePanel imagePanel;
 	
-	private JSpinner rowsSpin;
-	private JSpinner columnsSpin;
 	private JLabel rowsLabel;
 	private JLabel columnsLabel;
+	private JLabel wspLabel;
+	
+	private JSpinner rowsSpin;
+	private JSpinner columnsSpin;
+	private JSpinner wspSpin;
 	
 	private JButton addPointsButton;
 	private JButton generateButton;
@@ -70,10 +72,22 @@ public class ButtonPanel extends JPanel{
 		add(columnsSpin);
 		add(Box.createRigidArea(mediumRigidArea));
 		
+		wspLabel = new JLabel("Współczynnik skalowania");
+		wspLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(wspLabel);
+		add(Box.createRigidArea(smallRigidArea));
+		SpinnerModel wspModel = new SpinnerNumberModel(0.9, 0.1, 1.0, 0.01);
+		wspSpin = new JSpinner(wspModel);
+		wspSpin.setMaximumSize(spinSize);
+		wspSpin.setAlignmentX(Component.CENTER_ALIGNMENT);
+		add(wspSpin);
+		add(Box.createRigidArea(mediumRigidArea));
+		
 		addPointsButton = new JButton("Dodaj punkty");
 		addPointsButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				imagePanel.addPoints();
+				gridPanel.getDataModel().setWSP(wspSpin.getValue());
 			}
 		});
 		addPointsButton.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -88,6 +102,7 @@ public class ButtonPanel extends JPanel{
 				}
 				else{
 					gridPanel.getDataModel().setRowsAndCols(rowsSpin.getValue(), columnsSpin.getValue());
+					gridPanel.getDataModel().setWSP(wspSpin.getValue());
 					gridPanel.getDataModel().calculatePoints();
 					imagePanel.generateGrid();
 				}
@@ -103,6 +118,7 @@ public class ButtonPanel extends JPanel{
 			public void actionPerformed(ActionEvent arg0) {
 				gridPanel.getDataModel().setRowsAndCols(rowsSpin.getValue(), columnsSpin.getValue());
 				gridPanel.getDataModel().calculatePoints();
+				gridPanel.getDataModel().setWSP(wspSpin.getValue());
 				gridPanel.getDataModel().printPoints();
 				gridPanel.getDataModel().saveToDb();
 				System.out.println("Ok");

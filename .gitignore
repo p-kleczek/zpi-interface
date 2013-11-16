@@ -1,6 +1,10 @@
 *.class
+./.gitignore
 
 # Package Files #
 *.jar
 *.war
 *.ear
+/.metadata
+/Grid/.settings
+/Grid/target
