@@ -1,4 +1,4 @@
-package main.graphics;
+package main.view;
 
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
@@ -10,8 +10,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 
 import main.controller.HallHistogramFactory;
-import main.data.Hall;
-import main.grid.GridPanel;
+import main.model.Hall;
+import main.view.grid.GridPanel;
 import main.util.Log;
 import main.util.Strings;
 

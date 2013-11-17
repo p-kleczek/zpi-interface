@@ -1,4 +1,4 @@
-package main.view;
+package main.view.histogram;
 
 import java.text.SimpleDateFormat;
 import javax.swing.JPanel;

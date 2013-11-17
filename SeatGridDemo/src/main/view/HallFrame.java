@@ -1,8 +1,8 @@
-package main.graphics;
+package main.view;
 
 import javax.swing.JFrame;
 
-import main.data.Hall;
+import main.model.Hall;
 import main.util.Log;
 import main.util.Strings;
 

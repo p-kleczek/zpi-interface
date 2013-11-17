@@ -1,4 +1,4 @@
-package main.graphics;
+package main.view;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -6,47 +6,42 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.ListSelectionModel;
 
-import main.data.Event;
-import main.data.Hall;
+import main.model.Hall;
 import main.util.Log;
 import main.util.Strings;
 
 /**
- * Glowny frame dla widoku eventow. 
+ * Glowny frame dla widoku sal.
+ * 
  * @author Mateusz
- *
+ * 
  */
-
-public class ManageEventsFrame extends JFrame {
+public class ManageHallsFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private ArrayList<Event> eventList;
 	private ArrayList<Hall> hallList;
-	JButton addButton;
-	JButton removeButton;
-	JButton editButton;
-	JButton loadButton;
-	EventsTablePanel tablePanel;
-	EventDetailPanel detailsPanel;
+	private JButton addButton;
+	private JButton removeButton;
+	private JButton editButton;
+	private JButton loadButton;
+	private JButton gridButton;
+	private HallsTablePanel tablePanel;
+	private HallDetailPanel detailsPanel;
+	private int selectedRow;
 
-	public ManageEventsFrame(ArrayList<Hall> list) {
+	public ManageHallsFrame(ArrayList<Hall> list) {
 		super();
-		eventList = new ArrayList<Event>();
-		hallList = list;
-		Log.post("Initialize ManageEventsFrame");
+		this.hallList = list;
+		selectedRow = -1;
+		Log.post("Initialize ManageHallsFrame");
 
 		setSize(800, 600);
-		setTitle(Strings.TITLE_EVENTS);
+		setTitle(Strings.TITLE_HALLS);
 		setLayout(null);
 
-		eventList = new ArrayList<Event>();
-		for (Hall hall : hallList) {
-			eventList.addAll(hall.getEventList());
-		}
-
-		// dodaj przyciski
-		// trzeba dodac MouseListenery do kazdego
+		// buttony
 		addButton = new JButton(Strings.BUTTON_ADD);
 		addButton.setSize(100, 50);
 		add(addButton);
@@ -70,15 +65,51 @@ public class ManageEventsFrame extends JFrame {
 		//dodaj listenery do buttonow
 		setMouseListenersOnButtons();
 
+		// button na wyswietlanie siatki sali
+		gridButton = new JButton(Strings.BUTTON_SEAT_GRID);
+		gridButton.setSize(200, 50);
+		add(gridButton);
+		gridButton.setLocation(575, 500);
+		gridButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				if (selectedRow != -1)
+					new HallFrame(hallList.get(selectedRow));
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+		});
+		hideSeatGridButton();
+
 		// dodanie tabeli
-		tablePanel = new EventsTablePanel(this, eventList);
+		tablePanel = new HallsTablePanel(this, hallList);
 		tablePanel.setOpaque(true);
 		tablePanel.setSize(475, 450);
 		add(tablePanel);
 		tablePanel.setLocation(25, 100);
 
 		// dodaj pole szczegolow
-		detailsPanel = new EventDetailPanel();
+		detailsPanel = new HallDetailPanel();
 		detailsPanel.setOpaque(true);
 		detailsPanel.setSize(250, 325);
 		add(detailsPanel);
@@ -88,13 +119,29 @@ public class ManageEventsFrame extends JFrame {
 		setVisible(true);
 	}
 
-	public void setDetailText(int eventIndex){
-		detailsPanel.setupText(eventList.get(eventIndex));
+	public void setDetailText(int hallIndex) {
+		detailsPanel.setupText(hallList.get(hallIndex));
 		repaint();
 	}
-	
-	public void setMouseListenersOnButtons(){
-		
+
+	public void showSeatGridButton() {
+		gridButton.setVisible(true);
+	}
+
+	public void hideSeatGridButton() {
+		gridButton.setVisible(false);
+	}
+
+	public int getSelectedRow() {
+		return selectedRow;
+	}
+
+	public void setSelectedRow(int selectedRow) {
+		this.selectedRow = selectedRow;
+	}
+
+	public void setMouseListenersOnButtons() {
+
 		addButton.addMouseListener(new MouseListener() {
 
 			@Override
@@ -122,12 +169,12 @@ public class ManageEventsFrame extends JFrame {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		removeButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//tutaj kod
+				// tutaj kod
 			}
 
 			@Override
@@ -150,12 +197,12 @@ public class ManageEventsFrame extends JFrame {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		editButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//tutaj kod
+				// tutaj kod
 			}
 
 			@Override
@@ -175,16 +222,16 @@ public class ManageEventsFrame extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-			
+
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		loadButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				//tutaj kod
+				// tutaj kod
 			}
 
 			@Override
@@ -208,4 +255,5 @@ public class ManageEventsFrame extends JFrame {
 			}
 		});
 	}
+
 }

@@ -1,10 +1,10 @@
-package main.graphics;
+package main.view;
 
 import java.awt.GridLayout;
 import java.util.ArrayList;
 import javax.swing.JFrame;
-import main.data.Event;
-import main.data.Hall;
+import main.model.Event;
+import main.model.Hall;
 import main.util.Log;
 
 /**

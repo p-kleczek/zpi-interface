@@ -3,9 +3,9 @@ package main.controller;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import main.data.Hall;
+import main.model.Hall;
 import main.model.HallEventsDataModel;
-import main.view.HallHistogramPanel;
+import main.view.histogram.HallHistogramPanel;
 import org.jfree.data.time.Hour;
 import org.jfree.data.time.TimeSeries;
 

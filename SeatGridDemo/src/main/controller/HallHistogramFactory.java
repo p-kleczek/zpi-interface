@@ -2,9 +2,9 @@ package main.controller;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import main.data.Hall;
-import main.view.HallHistogramFrame;
-import main.view.HallHistogramPanel;
+import main.model.Hall;
+import main.view.histogram.HallHistogramFrame;
+import main.view.histogram.HallHistogramPanel;
 
 /**
  * Dostarcza wygodnych metod tworzenia elementów GUI wizualizacji histogramów

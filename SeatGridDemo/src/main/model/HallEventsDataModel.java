@@ -5,8 +5,6 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import main.data.Event;
-import main.data.Hall;
 import main.util.Settings;
 
 /**

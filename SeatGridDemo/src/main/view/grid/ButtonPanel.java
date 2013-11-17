@@ -1,4 +1,4 @@
-package main.grid;
+package main.view.grid;
 
 import java.awt.Component;
 import java.awt.Dimension;

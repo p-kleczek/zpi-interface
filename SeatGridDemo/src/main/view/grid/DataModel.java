@@ -1,4 +1,4 @@
-package main.grid;
+package main.view.grid;
 
 import java.awt.Image;
 import java.awt.Point;

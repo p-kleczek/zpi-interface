@@ -3,10 +3,10 @@ package main;
 import java.util.ArrayList;
 import java.util.GregorianCalendar;
 
-import main.data.Event;
-import main.data.Hall;
-import main.graphics.HallFrame;
-import main.graphics.MainFrame;
+import main.model.Event;
+import main.model.Hall;
+import main.view.HallFrame;
+import main.view.MainFrame;
 
 /**
  * Klasa demostracyjna. Posiada tylko metode main, by uruchomic pokaz dzialania

@@ -1,4 +1,4 @@
-package main.graphics;
+package main.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -13,7 +13,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 
-import main.data.Hall;
+import main.model.Hall;
 import main.util.Log;
 import main.util.Strings;
 

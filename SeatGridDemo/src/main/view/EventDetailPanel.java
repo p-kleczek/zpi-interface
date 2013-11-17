@@ -1,11 +1,11 @@
-package main.graphics;
+package main.view;
 
 import java.awt.BorderLayout;
 
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import main.data.Event;
+import main.model.Event;
 import main.util.Strings;
 
 /**

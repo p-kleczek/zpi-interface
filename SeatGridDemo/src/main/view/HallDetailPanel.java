@@ -1,4 +1,4 @@
-package main.graphics;
+package main.view;
 
 import java.awt.BorderLayout;
 import java.awt.Dimension;
@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
-import main.data.Hall;
+import main.model.Hall;
 import main.util.Strings;
 
 /**
