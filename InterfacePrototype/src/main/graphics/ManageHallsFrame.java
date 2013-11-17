@@ -14,8 +14,9 @@ import main.util.Strings;
 
 /**
  * Glowny frame dla widoku sal.
+ * 
  * @author Mateusz
- *
+ * 
  */
 public class ManageHallsFrame extends JFrame {
 
@@ -60,6 +61,9 @@ public class ManageHallsFrame extends JFrame {
 		loadButton.setSize(200, 50);
 		add(loadButton);
 		loadButton.setLocation(575, 25);
+		
+		//dodaj listenery do buttonow
+		setMouseListenersOnButtons();
 
 		// button na wyswietlanie siatki sali
 		gridButton = new JButton(Strings.BUTTON_SEAT_GRID);
@@ -134,6 +138,122 @@ public class ManageHallsFrame extends JFrame {
 
 	public void setSelectedRow(int selectedRow) {
 		this.selectedRow = selectedRow;
+	}
+
+	public void setMouseListenersOnButtons() {
+
+		addButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// tutaj kod
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+		});
+
+		removeButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// tutaj kod
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+		});
+
+		editButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// tutaj kod
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+
+				// TODO Auto-generated method stub
+			}
+		});
+
+		loadButton.addMouseListener(new MouseListener() {
+
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				// tutaj kod
+			}
+
+			@Override
+			public void mouseEntered(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseExited(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mousePressed(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+
+			@Override
+			public void mouseReleased(MouseEvent arg0) {
+				// TODO Auto-generated method stub
+			}
+		});
 	}
 
 }
