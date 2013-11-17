@@ -5,20 +5,26 @@ import java.util.GregorianCalendar;
 
 import main.data.Event;
 import main.data.Hall;
-import main.graphics.GridFrame;
+import main.graphics.HallFrame;
+import main.graphics.MainFrame;
 
 /**
  * Klasa demostracyjna. Posiada tylko metode main, by uruchomic pokaz dzialania
- * pozostalych klas. W mainie tworzymy sale, dodajemy do niej sztuczne eventy i
- * uruchamiamy GridFrame, ktory wizualizuje sale oraz jej uzycie na przestrzeni
- * eventow.
- */
+ * pozostalych klas.
+ * 
+ * Pokazuje tez mniej wiecej proces tworzenia nowych sal i eventow. Osoby
+ * odpowiedzialne za baze danych powinny zobaczyc jak tworze eventy/sale zeby
+ * moc przekonwertowac dane z bazy do interfejsu. Lub wymyslic jakis lepszy
+ * sposob skladowania/dostepu danych do wizualizacji.
+ * */
 
 public class Demo {
 
 	public static void main(String[] args) {
 
 		// basic setup
+
+		ArrayList<Hall> hallList = new ArrayList<Hall>();
 		Hall testHall = new Hall("H24", 5, 10);
 		Event event;
 		ArrayList<String> seatLayout;
@@ -105,8 +111,14 @@ public class Demo {
 		event.setDate(new GregorianCalendar(2013, 10, 1, 14, 30));
 		testHall.addEvent(event);
 
+		hallList.add(testHall);
+
+		// run menu
+		new MainFrame(hallList);
+
 		// run grid
-		GridFrame testGrid = new GridFrame(testHall);
+		// new HallFrame(testHall);
+
 	}
 
 }
