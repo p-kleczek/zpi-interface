@@ -10,19 +10,19 @@ public class Strings {
 	 */
 
 	// tytuly frame'ow
-	public static final String TITLE_MAIN = "Menu g³ówne";
-	public static final String TITLE_EVENTS = "Zarz¹dzaj eventami";
-	public static final String TITLE_HALLS = "Zarz¹zaj salami";
+	public static final String TITLE_MAIN = "Menu gÅ‚Ã³wne";
+	public static final String TITLE_EVENTS = "ZarzÄ…dzaj eventami";
+	public static final String TITLE_HALLS = "ZarzÄ…zaj salami";
 	public static final String TITLE_SEAT_GRID = "Siatka sali";
 
 	// buttons
-	public static final String BUTTON_EVENTS = "Zarz¹dzaj eventami";
-	public static final String BUTTON_HALLS = "Zarz¹dzaj salami";
+	public static final String BUTTON_EVENTS = "ZarzÄ…dzaj eventami";
+	public static final String BUTTON_HALLS = "ZarzÄ…dzaj salami";
 	public static final String BUTTON_ADD = "Dodaj";
-	public static final String BUTTON_REMOVE = "Usuñ";
+	public static final String BUTTON_REMOVE = "UsuÅ„";
 	public static final String BUTTON_EDIT = "Edytuj";
-	public static final String BUTTON_LOAD = "Za³aduj dane";
-	public static final String BUTTON_SEAT_GRID = "U¿ytkowanie miejsc";
+	public static final String BUTTON_LOAD = "ZaÅ‚aduj dane";
+	public static final String BUTTON_SEAT_GRID = "UÅ¼ytkowanie miejsc";
 
 	// naglowki tabeli
 	public static final String HEADER_HALL_ID = "ID sali";
@@ -32,12 +32,12 @@ public class Strings {
 	public static final String HEADER_EVENT_ADMINISTRATOR = "Administrator";
 
 	// szczegoly sali/eventow
-	public static final String DETAIL_HALL_TITLE = "Szczegó³y sali";
-	public static final String DETAIL_EVENT_TITLE = "Szczegó³y eventu";
+	public static final String DETAIL_HALL_TITLE = "SzczegÃ³Å‚y sali";
+	public static final String DETAIL_EVENT_TITLE = "SzczegÃ³Å‚y eventu";
 	public static final String DETAIL_HALL_ID = "ID sali:\t\t";
-	public static final String DETAIL_HALL_MAX = "Max iloœæ miejsc:\t";
+	public static final String DETAIL_HALL_MAX = "Max iloÅ›Ä‡ miejsc:\t";
 	public static final String DETAIL_EVENT_ADMINISTRATOR = "Administrator sali:\t";
-	public static final String DETAIL_HALL_NUM_OF_EVENTS = "Liczba eventów sali:\t";
+	public static final String DETAIL_HALL_NUM_OF_EVENTS = "Liczba eventÃ³w sali:\t";
 	public static final String DETAIL_EVENT_ID = "ID eventu:\t\t";
 	public static final String DETAIL_EVENT_DATE = "Data:\t\t";
 

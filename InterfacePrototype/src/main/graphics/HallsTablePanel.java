@@ -50,7 +50,7 @@ public class HallsTablePanel extends JPanel {
 					* hallList.get(i).getSeatsInRow();
 		}
 
-		// tworzenie tabeli oraz blokowanie edycji pól
+		// tworzenie tabeli oraz blokowanie edycji pÃ³l
 		DefaultTableModel model = new DefaultTableModel(data, columnNames);
 		table = new JTable(model) {
 			private static final long serialVersionUID = 1L;
