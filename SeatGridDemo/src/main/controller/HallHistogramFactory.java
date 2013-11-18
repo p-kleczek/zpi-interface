@@ -22,11 +22,10 @@ public class HallHistogramFactory {
      * panel histogramu.
      */
     public static JFrame createFrame(Hall hall) {
-        JFrame frame = new HallHistogramFrame();
+        HallHistogramFrame frame = new HallHistogramFrame(hall);
         JPanel panel = createPanel(hall);
-
-        frame.add(panel);
-        frame.pack();
+        
+        frame.setHistogramPanel(panel);
         return frame;
     }
 

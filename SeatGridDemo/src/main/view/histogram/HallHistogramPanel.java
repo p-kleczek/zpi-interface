@@ -1,6 +1,5 @@
 package main.view.histogram;
 
-import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 import main.controller.HistogramController;
 import main.util.Strings;
@@ -10,16 +9,11 @@ import org.jfree.chart.ChartUtilities;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.NumberAxis;
 import org.jfree.chart.axis.PeriodAxis;
-import org.jfree.chart.axis.PeriodAxisLabelInfo;
 import org.jfree.chart.axis.ValueAxis;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.chart.plot.XYPlot;
-import org.jfree.data.time.Day;
-import org.jfree.data.time.Hour;
-import org.jfree.data.time.Month;
 import org.jfree.data.time.TimeSeries;
 import org.jfree.data.time.TimeSeriesCollection;
-import org.jfree.data.time.Year;
 
 /**
  * Minimalny widget zawierający histogram zajętości miejsc w sali.
@@ -28,29 +22,6 @@ import org.jfree.data.time.Year;
  */
 public class HallHistogramPanel extends JPanel {
 
-    /**
-     * Daje możliwość łatwej zmiany dokładności opisu osi czasu wykresu na
-     * najdokładniejszą (co do minuty). Wartość domyślna.
-     */
-    public static final PeriodAxisLabelSet DETAILED_LABEL_SET = new PeriodAxisLabelSet(
-            new PeriodAxisLabelInfo(Hour.class, new SimpleDateFormat("HH:mm")),
-            new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat("d MMMM yyyy")));
-    /**
-     * Daje możliwość łatwej zmiany dokładności opisu osi czasu wykresu na mniej
-     * dokładną (co do dnia).
-     */
-    public static final PeriodAxisLabelSet NORMAL_LABEL_SET = new PeriodAxisLabelSet(
-            new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat("d")),
-            new PeriodAxisLabelInfo(Month.class, new SimpleDateFormat("MMMM yyyy")));
-    /**
-     * Daje możliwość łatwej zmiany dokładności opisu osi poziomej wykresu na
-     * taką, by pokryła większy przedział czasu (miesiące).
-     */
-    public static final PeriodAxisLabelSet BIG_PERIODS_LABEL_SET = new PeriodAxisLabelSet(
-            new PeriodAxisLabelInfo(Month.class, new SimpleDateFormat("MMM")),
-            new PeriodAxisLabelInfo(Year.class, new SimpleDateFormat("yyyy")));
-    // end of public constants declaration
-    // end of private constants declaration
     private final JFreeChart histogram;
     private final TimeSeriesCollection dataset;
     private final HistogramController controller;
@@ -95,7 +66,7 @@ public class HallHistogramPanel extends JPanel {
 
         PeriodAxis periodAxis = new PeriodAxis(Strings.HISTOGRAM_X_AXIS);
         periodAxis.setAutoRange(true);
-        periodAxis.setLabelInfo(DETAILED_LABEL_SET.getLabelSet());
+        periodAxis.setLabelInfo(PeriodAxisLabelSet.DETAILED_LABEL_SET.getLabelSet());
 
         ValueAxis rangeAxis = plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());

@@ -48,5 +48,11 @@ public class Strings {
     public final static String HISTOGRAM_TITLE = "Ilość zajętych miejsc";
     public final static String HISTOGRAM_X_AXIS = "Czas";
     public final static String HISTOGRAM_Y_AXIS = "Zajęte miejsca";
+    public final static String DETAILED_LABEL_SET_NAME = "Co do minuty";
+    public final static String NORMAL_LABEL_SET_NAME = "Co do dnia";
+    public final static String BIG_PERIODS_LABEL_SET_NAME = "Co do miesiąca";
+    public final static String BUTTON_GENERATE_HISTOGRAM = "Generuj wykres";
+    public final static String LABEL_HORIZONTAL_AXIS_SCALING = "Skalowanie osi poziomej";
+    
 
 }
