@@ -1,7 +1,5 @@
 package main.util;
 
-import javax.swing.Icon;
-
 public class Strings {
 
 	/**
@@ -44,5 +42,11 @@ public class Strings {
 	public static final String DETAIL_HALL_NUM_OF_EVENTS = "Liczba eventów sali:\t";
 	public static final String DETAIL_EVENT_ID = "ID eventu:\t\t";
 	public static final String DETAIL_EVENT_DATE = "Data:\t\t";
+        
+    // HallHistogramPanel
+    public final static String HISTOGRAM_FRAME_TITLE = "Widok histogramu";
+    public final static String HISTOGRAM_TITLE = "Ilość zajętych miejsc";
+    public final static String HISTOGRAM_X_AXIS = "Czas";
+    public final static String HISTOGRAM_Y_AXIS = "Zajęte miejsca";
 
 }

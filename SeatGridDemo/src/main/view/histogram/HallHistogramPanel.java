@@ -3,6 +3,7 @@ package main.view.histogram;
 import java.text.SimpleDateFormat;
 import javax.swing.JPanel;
 import main.controller.HistogramController;
+import main.util.Strings;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.ChartUtilities;
@@ -49,9 +50,6 @@ public class HallHistogramPanel extends JPanel {
             new PeriodAxisLabelInfo(Month.class, new SimpleDateFormat("MMM")),
             new PeriodAxisLabelInfo(Year.class, new SimpleDateFormat("yyyy")));
     // end of public constants declaration
-    private final static String HISTOGRAM_TITLE = "Ilość zajętych miejsc";
-    private final static String HISTOGRAM_X_AXIS = "Czas";
-    private final static String HISTOGRAM_Y_AXIS = "Zajęte miejsca";
     // end of private constants declaration
     private final JFreeChart histogram;
     private final TimeSeriesCollection dataset;
@@ -81,10 +79,10 @@ public class HallHistogramPanel extends JPanel {
      */
     private JFreeChart createChart() {
         JFreeChart localJFreeChart = ChartFactory.createXYBarChart(
-                HISTOGRAM_TITLE, // title
-                HISTOGRAM_X_AXIS, // x axis
+                Strings.HISTOGRAM_TITLE, // title
+                Strings.HISTOGRAM_X_AXIS, // x axis
                 true, // date axis
-                HISTOGRAM_Y_AXIS, // y axis
+                Strings.HISTOGRAM_Y_AXIS, // y axis
                 this.dataset, // dataset
                 PlotOrientation.VERTICAL, // orientation
                 true, // legend
@@ -95,7 +93,7 @@ public class HallHistogramPanel extends JPanel {
         plot.setDomainCrosshairVisible(true);
         plot.setRangeCrosshairVisible(true);
 
-        PeriodAxis periodAxis = new PeriodAxis(HISTOGRAM_X_AXIS);
+        PeriodAxis periodAxis = new PeriodAxis(Strings.HISTOGRAM_X_AXIS);
         periodAxis.setAutoRange(true);
         periodAxis.setLabelInfo(DETAILED_LABEL_SET.getLabelSet());
 
