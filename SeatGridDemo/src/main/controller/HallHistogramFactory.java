@@ -22,10 +22,13 @@ public class HallHistogramFactory {
      * panel histogramu.
      */
     public static JFrame createFrame(Hall hall) {
-        HallHistogramFrame frame = new HallHistogramFrame(hall);
+        HistogramFrameController controller = new HistogramFrameController();
+        HallHistogramFrame frame = new HallHistogramFrame(controller);
+
         JPanel panel = createPanel(hall);
-        
-        frame.setHistogramPanel(panel);
+        controller.addHistogramFrame(frame);
+        controller.displayHistogramPanel(hall);
+
         return frame;
     }
 
@@ -35,8 +38,8 @@ public class HallHistogramFactory {
      * @param hall Sala której histogram ma zostać zwizualizowany
      * @return Panel zawierający histogram.
      */
-    public static JPanel createPanel(Hall hall) {
-        HistogramController controller = new HistogramController();
+    public static HallHistogramPanel createPanel(Hall hall) {
+        HistogramPanelController controller = new HistogramPanelController();
         HallHistogramPanel panel = new HallHistogramPanel(controller);
 
         controller.addHistogramPanel(panel);

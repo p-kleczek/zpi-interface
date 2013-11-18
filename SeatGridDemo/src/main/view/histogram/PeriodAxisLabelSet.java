@@ -65,4 +65,9 @@ public class PeriodAxisLabelSet {
     PeriodAxisLabelInfo[] getLabelSet() {
         return labelSet;
     }
+
+    @Override
+    public String toString() {
+        return getName();
+    }
 }

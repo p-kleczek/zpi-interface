@@ -39,7 +39,7 @@ public class EventDetailPanel extends JPanel {
 		text.append("---------------" + "\n");
 		text.append(Strings.DETAIL_EVENT_ID + event.getEventId() + "\n");
 		text.append(Strings.DETAIL_HALL_ID + event.getHallId() + "\n");
-		text.append(Strings.DETAIL_EVENT_DATE + event.getDate() + "\n");
+		text.append(Strings.DETAIL_EVENT_DATE + event.getDateString()+ "\n");
 		text.append(Strings.DETAIL_EVENT_ADMINISTRATOR
 				+ event.getAdministrator() + "\n");
 	}

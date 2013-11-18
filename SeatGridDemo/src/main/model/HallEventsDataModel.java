@@ -1,7 +1,5 @@
 package main.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -20,6 +18,7 @@ public class HallEventsDataModel {
     private final int eventCount;
     private final String hallId;
     private final HashMap<Date, Double> data;
+    private final EventFilter filter;
 
     /**
      * Tworzy obiekt reprezentujące dane sali oraz wydarzeń na podstawie
@@ -28,10 +27,21 @@ public class HallEventsDataModel {
      * @param hall Sala, której dane zostaną poddane obróbce
      */
     public HallEventsDataModel(Hall hall) {
+        this(hall, null);
+    }
+
+    /**
+     * Tworzy obiekt reprezentujące dane sali oraz wydarzeń na podstawie
+     * przekazanego w argumencie obiektu klasy {@link main.data.Hall}.
+     *
+     * @param hall Sala, której dane zostaną poddane obróbce
+     */
+    public HallEventsDataModel(Hall hall, EventFilter filter) {
         this.eventList = hall.getEventList();
         this.eventCount = eventList.size();
         this.hallId = hall.getHallId();
         this.data = new HashMap<>(eventCount);
+        this.filter = filter;
 
         prepareData();
     }
@@ -42,22 +52,10 @@ public class HallEventsDataModel {
      */
     private void prepareData() {
         for (Event event : eventList) {
-            /* 
-             * FIXME - getDate powinno zwracać date, a getDateString czy coś
-             * stringa ;f Ewentualnie powinien być dostęp do jakiegoś obiektu
-             * DateFormat żeby dało się tego stringa sparsować normalnie a nie
-             * zgadując formatD
-             */
-            String dateString = event.getDate().toString();
-            SimpleDateFormat format = new SimpleDateFormat("d-M-yyyy");
-            try {
-                Date date = format.parse(dateString);
-            } catch (ParseException ex) {
-                // pusty catch, bo to musi być zrefactorowane... tak nie pojedzie
+            if (filter == null || filter.isValid(event)) {
+                data.put(event.getDate().getTime(),
+                         new Double(getTakenSeatsCount(event)));
             }
-                
-//                data.put(event.getDate().getTime(),
-//                        new Double(getTakenSeatsCount(event)));
         }
     }
 

@@ -45,7 +45,7 @@ public class EventsTablePanel extends JPanel {
 		for (int i = 0; i < size; i++) {
 			data[i][0] = eventList.get(i).getHallId();
 			data[i][1] = eventList.get(i).getEventId();
-			data[i][2] = eventList.get(i).getDate();
+			data[i][2] = eventList.get(i).getDateString();
 			data[i][3] = eventList.get(i).getAdministrator();
 		}
 

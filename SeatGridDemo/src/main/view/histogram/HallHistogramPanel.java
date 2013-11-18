@@ -1,7 +1,7 @@
 package main.view.histogram;
 
 import javax.swing.JPanel;
-import main.controller.HistogramController;
+import main.controller.HistogramPanelController;
 import main.util.Strings;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -24,16 +24,15 @@ public class HallHistogramPanel extends JPanel {
 
     private final JFreeChart histogram;
     private final TimeSeriesCollection dataset;
-    private final HistogramController controller;
+    private final HistogramPanelController controller;
+    private XYPlot plot;
 
     /**
-     * Tworzy panel histogramu na podstawie danych zawartych w obiekcie
-     * {@code hall}.
+     * Tworzy panel histogramu korzystający z danym kontrolerem.
      *
-     * @param hall Obiekt reprezentujący salę której histogram zajętości miejsc
-     * zostanie zwizualizowany.
+     * @param controller Kontroler któremu podlegać ma panel
      */
-    public HallHistogramPanel(HistogramController controller) {
+    public HallHistogramPanel(HistogramPanelController controller) {
         this.dataset = new TimeSeriesCollection();
         this.histogram = createChart();
         this.controller = controller;
@@ -60,19 +59,14 @@ public class HallHistogramPanel extends JPanel {
                 true, // tooltips
                 false); // URLs
 
-        XYPlot plot = (XYPlot) localJFreeChart.getPlot();
+        plot = (XYPlot) localJFreeChart.getPlot();
         plot.setDomainCrosshairVisible(true);
         plot.setRangeCrosshairVisible(true);
 
-        PeriodAxis periodAxis = new PeriodAxis(Strings.HISTOGRAM_X_AXIS);
-        periodAxis.setAutoRange(true);
-        periodAxis.setLabelInfo(PeriodAxisLabelSet.DETAILED_LABEL_SET.getLabelSet());
+        setAxisLabelSet(PeriodAxisLabelSet.DETAILED_LABEL_SET);
 
         ValueAxis rangeAxis = plot.getRangeAxis();
         rangeAxis.setStandardTickUnits(NumberAxis.createIntegerTickUnits());
-
-        plot.setDomainAxis(periodAxis);
-
 
         ChartUtilities.applyCurrentTheme(localJFreeChart);
         return localJFreeChart;
@@ -97,10 +91,24 @@ public class HallHistogramPanel extends JPanel {
         this.dataset.addSeries(series);
     }
 
+    /**
+     * Pozwala na wyczyszczenie wyrenderowanego wykresu
+     */
+    public void clearHistogram() {
+        this.dataset.removeAllSeries();
+    }
+
     /*
      * Getters & setters
      */
-    public HistogramController getController() {
+    public HistogramPanelController getController() {
         return controller;
+    }
+
+    public void setAxisLabelSet(PeriodAxisLabelSet axisSet) {
+        PeriodAxis periodAxis = new PeriodAxis(Strings.HISTOGRAM_X_AXIS);
+        periodAxis.setAutoRange(true);
+        periodAxis.setLabelInfo(axisSet.getLabelSet());
+        plot.setDomainAxis(periodAxis);
     }
 }

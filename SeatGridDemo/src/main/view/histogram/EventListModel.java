@@ -39,4 +39,16 @@ public final class EventListModel extends DefaultListModel {
         super.addElement(String.valueOf(element.getEventId()));
         events.put(element.getEventId(), element);
     }
+
+    public void addEvents(Event... elements) {
+        for (Event event : elements) {
+            addEvent(event);
+        }
+    }
+
+    @Override
+    public void removeAllElements() {
+        super.removeAllElements();
+        events.clear();
+    }
 }
