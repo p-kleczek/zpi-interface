@@ -4,11 +4,22 @@ import java.awt.Image;
 import java.awt.Point;
 import java.io.File;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
+import main.dao.DAO;
+import main.util.Log;
 
+/**
+ * Dostarcza model danych, na których operują komponenty odpowiedzialne za wyznaczanie siatki na zdjęciu sali
+ *
+ * @author gaxit
+ */
 public class DataModel {
 	private List<Point> pointList;
 	private Image image;
@@ -20,23 +31,28 @@ public class DataModel {
 	private Point rightBottomPoint;
 	private double WSP;
 	
+        /**
+        * Tworzy model oraz inicjalizuje podstawowe zmienne
+        */
 	public DataModel(){
 		newPointList();
-		loadImage();
 		rows = 0;
 		cols = 0;
 		WSP = 0;
 	}
 	
-	private void loadImage(){
-		try {
-		    image = ImageIO.read(new File("img/Sala.png"));
-		} catch (IOException e) {
-		}
-	}
-	
+        /**
+        * Zapisuje wyznaczone dane do bazy danych
+        */
 	public void saveToDb(){
-		System.out.println("Zapisywanie danych do bazy");
+            System.out.println("Zapisywanie danych do bazy");
+            SaveToDb db = new SaveToDb(this);
+            try {
+                DAO dao = new DAO("postgres", "postgre", "jdbc:postgresql://localhost:5432/zpi_db");
+                dao.executeQuery(db);
+            } catch (SQLException ex) {
+                Log.post(ex.getMessage());
+            }
 	}
 	
 	public void setRowsAndCols(Object row, Object col){
@@ -49,6 +65,9 @@ public class DataModel {
 		cols = col;
 	}
 	
+        /**
+        * Wyznacza, który punkt leży w którym rogu sali
+        */
 	public void calculatePoints(){
 		List<Point> localList = new LinkedList<Point>();
 		for (int i=0;i<pointList.size();i++){
@@ -88,13 +107,6 @@ public class DataModel {
 			rightBottomPoint = localList.get(1);
 			rightTopPoint = localList.get(0);
 		}
-	}
-	
-	public void printPoints(){
-		System.out.println("Left top: " + leftTopPoint.x + ":" + leftTopPoint.y);
-		System.out.println("Left bottom: " + leftBottomPoint.x + ":" + leftBottomPoint.y);
-		System.out.println("Right top: " + rightTopPoint.x + ":" + rightTopPoint.y);
-		System.out.println("Right bottom: " + rightBottomPoint.x + ":" + rightBottomPoint.y);
 	}
 	
 	//--Settery i gettery ponizej

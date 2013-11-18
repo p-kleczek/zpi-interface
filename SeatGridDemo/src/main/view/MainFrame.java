@@ -67,7 +67,7 @@ public class MainFrame extends JFrame {
 				frame.setSize(800, 530);
 				frame.setVisible(true);
 				frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-				frame.add(new GridPanel());
+				frame.add(new GridPanel(frame));
 				frame.revalidate();
 			}
 

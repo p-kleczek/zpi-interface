@@ -4,20 +4,22 @@ import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.awt.image.BufferedImage;
 import java.util.LinkedList;
 import java.util.List;
 
 import javax.swing.JPanel;
 
+/**
+ * Komponent wyświetlający zdjęcie sali
+ * 
+ * @author gaxit
+ */
 public class ImagePanel extends JPanel {
 
 	private static final long serialVersionUID = -8296011972436092336L;
 
 	private GridPanel gridPanel;
 	private DataModel dataModel;
-
-	private BufferedImage img;
 
 	private boolean addPoints;
 	private boolean drawGrid;
@@ -27,12 +29,16 @@ public class ImagePanel extends JPanel {
 	private List<Point> rightBorder;
 	private List<Point> bottomBorder;
 
+        /**
+        * Tworzy panel wyświetlający zdjęcie sali
+        *
+        * @param _gridPanel Komponent nadrzędny
+        */
 	public ImagePanel(GridPanel _gridPanel) {
 		addPoints = false;
 		drawGrid = false;
 		gridPanel = _gridPanel;
 		dataModel = gridPanel.getDataModel();
-		img = (BufferedImage) dataModel.getImage();
 		leftBorder = new LinkedList<Point>();
 		topBorder = new LinkedList<Point>();
 		rightBorder = new LinkedList<Point>();
@@ -64,7 +70,10 @@ public class ImagePanel extends JPanel {
 			}
 		});
 	}
-
+        
+        /**
+        * Pozwala na dodanie 4 punktów na zdjęciu sali
+        */
 	public void addPoints() {
 		addPoints = true;
 		drawGrid = false;
@@ -73,6 +82,9 @@ public class ImagePanel extends JPanel {
 		gridPanel.repaint();
 	}
 
+        /**
+        * Wyznacza punkty, na podstawie których będzie narysowana siatka
+        */
 	public void generateGrid() {
 		drawGrid = true;
 
@@ -166,56 +178,6 @@ public class ImagePanel extends JPanel {
 		}
 		rightBorder.add(rightTop);
 
-		// //lewo
-		// int leftHeight = Math.abs(leftTop.y-leftBottom.y);
-		// int leftWidth = Math.abs(leftTop.x-leftBottom.x);
-		// double lewy_wsp = 0;
-		// double lewy_stara_wartosc = 1;
-		// for (int i=0;i<rows;i++){
-		// lewy_wsp += lewy_stara_wartosc;
-		// lewy_stara_wartosc = lewy_stara_wartosc * WSP;
-		// }
-		// double dodaj = leftHeight / lewy_wsp;
-		// double suma = 0;
-		// for (int i=0;i<rows;i++){
-		// if (leftTop.x<leftBottom.x){
-		// leftBorder.add(new Point(leftBottom.x-i*leftWidth/rows,
-		// (int)(leftBottom.y-suma)));
-		// }
-		// else{
-		// leftBorder.add(new Point(leftBottom.x+i*leftWidth/rows,
-		// (int)(leftBottom.y-suma)));
-		// }
-		// suma = suma + dodaj;
-		// dodaj = dodaj * WSP;
-		// }
-		// leftBorder.add(leftTop);
-
-		// //prawo
-		// int rightHeight = Math.abs(rightTop.y-rightBottom.y);
-		// int rightWidth = Math.abs(rightTop.x-rightBottom.x);
-		// double prawy_wsp = 0;
-		// double prawy_stara_wart = 1;
-		// for (int i=0;i<rows;i++){
-		// prawy_wsp += prawy_stara_wart;
-		// prawy_stara_wart = prawy_stara_wart * WSP;
-		// }
-		// dodaj = rightHeight / prawy_wsp;
-		// suma = 0;
-		// for (int i=0;i<rows;i++){
-		// if (rightTop.x<rightBottom.x){
-		// rightBorder.add(new Point(rightBottom.x-i*rightWidth/rows,
-		// (int)(rightBottom.y-suma)));
-		// }
-		// else{
-		// rightBorder.add(new Point(rightBottom.x+i*rightWidth/rows,
-		// (int)(rightBottom.y-suma)));
-		// }
-		// suma = suma + dodaj;
-		// dodaj = dodaj * WSP;
-		// }
-		// rightBorder.add(rightTop);
-
 		// gora
 		int topHeight = Math.abs(leftTop.y - rightTop.y);
 		int topWidth = Math.abs(leftTop.x - rightTop.x);
@@ -248,89 +210,15 @@ public class ImagePanel extends JPanel {
 		gridPanel.repaint();
 	}
 
-	// stara wersja
-	// public void generateGrid(){
-	// drawGrid = true;
-	//
-	// leftBorder = new LinkedList<Point>();
-	// topBorder = new LinkedList<Point>();
-	// rightBorder = new LinkedList<Point>();
-	// bottomBorder = new LinkedList<Point>();
-	//
-	// Point leftTop = gridPanel.getDataModel().getLeftTopPoint();
-	// Point leftBottom = gridPanel.getDataModel().getLeftBottomPoint();
-	// Point rightTop = gridPanel.getDataModel().getRightTopPoint();
-	// Point rightBottom = gridPanel.getDataModel().getRightBottomPoint();
-	// int rows = gridPanel.getDataModel().getRows();
-	// int cols = gridPanel.getDataModel().getCols();
-	//
-	// int leftHeight = Math.abs(leftTop.y-leftBottom.y);
-	// int leftWidth = Math.abs(leftTop.x-leftBottom.x);
-	// for (int i=0;i<rows;i++){
-	// if (leftTop.x<leftBottom.x){
-	// leftBorder.add(new Point(leftTop.x+i*leftWidth/rows,
-	// leftTop.y+i*leftHeight/rows));
-	// }
-	// else{
-	// leftBorder.add(new Point(leftTop.x-i*leftWidth/rows,
-	// leftTop.y+i*leftHeight/rows));
-	// }
-	// }
-	// leftBorder.add(leftBottom);
-	//
-	// int rightHeight = Math.abs(rightTop.y-rightBottom.y);
-	// int rightWidth = Math.abs(rightTop.x-rightBottom.x);
-	// for (int i=0;i<rows;i++){
-	// if (rightTop.x<rightBottom.x){
-	// rightBorder.add(new Point(rightTop.x+i*rightWidth/rows,
-	// rightTop.y+i*rightHeight/rows));
-	// }
-	// else{
-	// rightBorder.add(new Point(rightTop.x-i*rightWidth/rows,
-	// rightTop.y+i*rightHeight/rows));
-	// }
-	// System.out.println("Right border: " + rightBorder.get(i).x + ":" +
-	// rightBorder.get(i).y);
-	// }
-	// rightBorder.add(rightBottom);
-	//
-	//
-	// int topHeight = Math.abs(leftTop.y-rightTop.y);
-	// int topWidth = Math.abs(leftTop.x-rightTop.x);
-	// for (int i=0;i<cols;i++){
-	// if (leftTop.y<rightTop.y){
-	// topBorder.add(new Point(leftTop.x+i*topWidth/cols,
-	// leftTop.y+i*topHeight/cols));
-	// }
-	// else{
-	// topBorder.add(new Point(leftTop.x+i*topWidth/cols,
-	// leftTop.y-i*topHeight/cols));
-	// }
-	// }
-	// topBorder.add(rightTop);
-	//
-	// int bottomHeight = Math.abs(leftBottom.y-rightBottom.y);
-	// int bottomWidth = Math.abs(leftBottom.x-rightBottom.x);
-	// for (int i=0;i<cols;i++){
-	// if (leftBottom.y<rightBottom.y){
-	// bottomBorder.add(new Point(leftBottom.x+i*bottomWidth/cols,
-	// leftBottom.y+i*bottomHeight/cols));
-	// }
-	// else{
-	// bottomBorder.add(new Point(leftBottom.x+i*bottomWidth/cols,
-	// leftBottom.y-i*bottomHeight/cols));
-	// }
-	// }
-	// bottomBorder.add(rightBottom);
-	//
-	// gridPanel.revalidate();
-	// gridPanel.repaint();
-	// }
-
+        /**
+        * Rysuje wskazane obiekty na komponencie
+        * 
+        * @param g Obiekt odpowiedzialny za rysowanie
+        */
 	@Override
 	public void paint(Graphics g) {
 		super.paintComponents(g);
-		g.drawImage(img, 10, 10, this);
+		g.drawImage(gridPanel.getDataModel().getImage(), 10, 10, this);
 		for (int i = 0; i < dataModel.getPointList().size(); i++) {
 			g.fillOval(dataModel.getPointList().get(i).x, dataModel
 					.getPointList().get(i).y, 10, 10);
