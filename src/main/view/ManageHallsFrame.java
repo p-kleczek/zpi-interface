@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.ListSelectionModel;
 
 import main.model.Hall;
 import main.util.Log;
@@ -14,9 +13,9 @@ import main.util.Strings;
 
 /**
  * Glowny frame dla widoku sal.
- * 
+ *
  * @author Mateusz
- * 
+ *
  */
 public class ManageHallsFrame extends JFrame {
 
@@ -61,7 +60,7 @@ public class ManageHallsFrame extends JFrame {
 		loadButton.setSize(200, 50);
 		add(loadButton);
 		loadButton.setLocation(575, 25);
-		
+
 		//dodaj listenery do buttonow
 		setMouseListenersOnButtons();
 
@@ -146,7 +145,7 @@ public class ManageHallsFrame extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// tutaj kod
+				new NewHallFrame();
 			}
 
 			@Override

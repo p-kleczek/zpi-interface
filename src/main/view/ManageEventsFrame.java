@@ -13,7 +13,7 @@ import main.util.Log;
 import main.util.Strings;
 
 /**
- * Glowny frame dla widoku eventow. 
+ * Glowny frame dla widoku eventow.
  * @author Mateusz
  *
  */
@@ -66,7 +66,7 @@ public class ManageEventsFrame extends JFrame {
 		loadButton.setSize(200, 50);
 		add(loadButton);
 		loadButton.setLocation(575, 25);
-		
+
 		//dodaj listenery do buttonow
 		setMouseListenersOnButtons();
 
@@ -92,14 +92,14 @@ public class ManageEventsFrame extends JFrame {
 		detailsPanel.setupText(eventList.get(eventIndex));
 		repaint();
 	}
-	
+
 	public void setMouseListenersOnButtons(){
-		
+
 		addButton.addMouseListener(new MouseListener() {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// tutaj kod
+				new NewEventFrame();
 			}
 
 			@Override
@@ -122,7 +122,7 @@ public class ManageEventsFrame extends JFrame {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		removeButton.addMouseListener(new MouseListener() {
 
 			@Override
@@ -150,7 +150,7 @@ public class ManageEventsFrame extends JFrame {
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		editButton.addMouseListener(new MouseListener() {
 
 			@Override
@@ -175,11 +175,11 @@ public class ManageEventsFrame extends JFrame {
 
 			@Override
 			public void mouseReleased(MouseEvent arg0) {
-			
+
 				// TODO Auto-generated method stub
 			}
 		});
-		
+
 		loadButton.addMouseListener(new MouseListener() {
 
 			@Override
