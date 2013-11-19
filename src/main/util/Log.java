@@ -6,7 +6,7 @@ package main.util;
  */
 public class Log {
 
-	public static void post(String message) {
-		System.out.println(message);
-	}
+    public static void post(String message) {
+        System.out.println(message);
+    }
 }

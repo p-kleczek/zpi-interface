@@ -12,36 +12,34 @@ import main.util.Strings;
  * JPanel wyswietlajacy szczegoly eventu po kliknieciu na jakis element tabeli
  * eventow. Nie ma tutaj fukcjonalnosci klikania (to jest zaimplemetowane w
  * samej tabeli - patrz EventTablePanel).
- * 
+ *
  * @author Mateusz
- * 
+ *
  */
-
 public class EventDetailPanel extends JPanel {
 
-	private static final long serialVersionUID = 1L;
-	JTextArea text;
+    private static final long serialVersionUID = 1L;
+    JTextArea text;
 
-	public EventDetailPanel() {
-		super();
-		setLayout(new BorderLayout());
-		text = new JTextArea();
-		text.setEditable(false);
-		JScrollPane scrollPane = new JScrollPane(text);
-		add(scrollPane, BorderLayout.CENTER);
+    public EventDetailPanel() {
+        super();
+        setLayout(new BorderLayout());
+        text = new JTextArea();
+        text.setEditable(false);
+        JScrollPane scrollPane = new JScrollPane(text);
+        add(scrollPane, BorderLayout.CENTER);
 
-		setVisible(true);
-	}
+        setVisible(true);
+    }
 
-	public void setupText(Event event) {
-		text.setText("");
-		text.append(Strings.DETAIL_EVENT_TITLE + "\n");
-		text.append("---------------" + "\n");
-		text.append(Strings.DETAIL_EVENT_ID + event.getEventId() + "\n");
-		text.append(Strings.DETAIL_HALL_ID + event.getHallId() + "\n");
-		text.append(Strings.DETAIL_EVENT_DATE + event.getDateString()+ "\n");
-		text.append(Strings.DETAIL_EVENT_ADMINISTRATOR
-				+ event.getAdministrator() + "\n");
-	}
-
+    public void setupText(Event event) {
+        text.setText("");
+        text.append(Strings.DETAIL_EVENT_TITLE + "\n");
+        text.append("---------------" + "\n");
+        text.append(Strings.DETAIL_EVENT_ID + event.getEventId() + "\n");
+        text.append(Strings.DETAIL_HALL_ID + event.getHallId() + "\n");
+        text.append(Strings.DETAIL_EVENT_DATE + event.getDateString() + "\n");
+        text.append(Strings.DETAIL_EVENT_ADMINISTRATOR
+                    + event.getAdministrator() + "\n");
+    }
 }

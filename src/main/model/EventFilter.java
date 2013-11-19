@@ -4,6 +4,7 @@ import java.util.HashSet;
 
 /**
  * Pozwala na łatwe filtrowanie wydarzeń wg ich identyfikatorów.
+ *
  * @author bargosc
  */
 public class EventFilter {
