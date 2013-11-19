@@ -14,6 +14,8 @@ public class Strings {
 	public static final String TITLE_EVENTS = "Zarządzaj eventami";
 	public static final String TITLE_HALLS = "Zarzązaj salami";
 	public static final String TITLE_SEAT_GRID = "Siatka sali";
+	public static final String TITLE_NEW_EVENT = "Nowy event";
+	public static final String TITLE_NEW_HALL = "Nowa sala";
 
 	// buttons
 	public static final String BUTTON_EVENTS = "Zarządzaj eventami";
@@ -40,5 +42,14 @@ public class Strings {
 	public static final String DETAIL_HALL_NUM_OF_EVENTS = "Liczba eventów sali:\t";
 	public static final String DETAIL_EVENT_ID = "ID eventu:\t\t";
 	public static final String DETAIL_EVENT_DATE = "Data:\t\t";
+	
+	// nowy event/sala
+	public static final String LABEL_NEW_EVENT_EVENTID = "ID eventu";
+	public static final String LABEL_NEW_EVENT_HALLID = "ID sali";
+	public static final String LABEL_NEW_EVENT_ADMINISTRATOR = "Administrator";
+	public static final String LABEL_NEW_EVENT_DATE = "Data";
+	public static final String LABEL_NEW_HALL_ID = "ID sali";
+	public static final String LABEL_NEW_HALL_ROWS = "Liczba rzędów";
+	public static final String LABEL_NEW_HALL_SEATS_IN_ROW = "Liczba miejsc w rzędzie";
 
 }

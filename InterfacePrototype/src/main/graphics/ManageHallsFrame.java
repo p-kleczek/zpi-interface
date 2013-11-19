@@ -146,7 +146,7 @@ public class ManageHallsFrame extends JFrame {
 
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
-				// tutaj kod
+				new NewHallFrame();
 			}
 
 			@Override

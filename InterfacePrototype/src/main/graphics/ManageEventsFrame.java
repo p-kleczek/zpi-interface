@@ -100,6 +100,7 @@ public class ManageEventsFrame extends JFrame {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
 				// tutaj kod
+				new NewEventFrame();
 			}
 
 			@Override
