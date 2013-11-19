@@ -14,6 +14,8 @@ import main.view.histogram.PeriodAxisLabelSet;
 import org.jfree.data.time.TimeSeries;
 
 /**
+ * Zapewnia komunikację pomiędzy modelem i widokiem histogramu oraz upublicznia
+ * API do zarządzania nim.
  *
  * @author bargosc
  */
@@ -38,14 +40,21 @@ public class HistogramFrameController {
         this.histogramFrames.add(frame);
     }
 
-    void displayHistogramPanel(Hall hall) {
+    /**
+     * Dostarcza łatwego sposobu na stworzenie i wyrenderowanie panelu
+     * histogramu na podstawie przekazanego obiektu reprezentującego salę.
+     *
+     * @param hall Reprezentuje salę której wydarzenia mają zostać przedstawione
+     * na histogramie.
+     */
+    public void displayHistogramPanel(Hall hall) {
         HallHistogramPanel panel = HallHistogramFactory.createPanel(hall);
         ArrayList<Event> hallEvents = hall.getEventList();
         Event[] eventArr = hallEvents.toArray(new Event[hallEvents.size()]);
 
         for (HallHistogramFrame frame : histogramFrames) {
             JList eventList = frame.getEventList();
-            
+
             DefaultListModel<Event> model = (DefaultListModel<Event>) eventList.getModel();
             model.removeAllElements();
             for (Event event : eventArr) {
@@ -57,10 +66,13 @@ public class HistogramFrameController {
         }
     }
 
-    public void handleAxisComboSelection(PeriodAxisLabelSet selectedItem) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
+    /**
+     * Ustawia wybrany zestaw etykiet osi czasu w panelu histogramu należącego
+     * do przekazanego widoku.
+     *
+     * @param frame Widok którego panel należy zaktualizować
+     * @param axisSet Wybrany zestaw etykiet osi czasu
+     */
     public void handleAxisComboSelection(HallHistogramFrame frame,
                                          PeriodAxisLabelSet axisSet) {
         HallHistogramPanel panel = frame.getHistogramPanel();
@@ -68,6 +80,15 @@ public class HistogramFrameController {
         panelController.setAxisLabelSet(panel, axisSet);
     }
 
+    /**
+     * Na podstawie wybranych w widoku {@code frame} wydarzeń tworzy zawężony do
+     * tych wydarzeń zbiór danych do wyrenderowania i przekazuje go do metody
+     * {@link main.controller.HistogramPanelController#displayHallHistogram(main.view.histogram.HallHistogramPanel, org.jfree.data.time.TimeSeries)}.
+     *
+     * @param frame Widok w którym należy wyrenderować zawężony histogram
+     * @param selectedEvents Lista wydarzeń które należy uwzględnić w
+     * histogramie
+     */
     public void handleGenerateHistogramClick(HallHistogramFrame frame,
                                              List<Event> selectedEvents) {
         Hall hall = frame.getHall();

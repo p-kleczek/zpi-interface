@@ -21,7 +21,7 @@ public class HallEventsDataModel {
     private final EventFilter filter;
 
     /**
-     * Tworzy obiekt reprezentujące dane sali oraz wydarzeń na podstawie
+     * Tworzy obiekt reprezentujący dane sali oraz wydarzeń na podstawie
      * przekazanego w argumencie obiektu klasy {@link main.data.Hall}.
      *
      * @param hall Sala, której dane zostaną poddane obróbce
@@ -31,10 +31,13 @@ public class HallEventsDataModel {
     }
 
     /**
-     * Tworzy obiekt reprezentujące dane sali oraz wydarzeń na podstawie
-     * przekazanego w argumencie obiektu klasy {@link main.data.Hall}.
+     * Tworzy obiekt reprezentujący dane sali oraz wydarzeń na podstawie
+     * przekazanego w argumencie obiektu klasy {@link main.data.Hall}
+     * uwzględniając ograniczenie {@code filter}.
      *
      * @param hall Sala, której dane zostaną poddane obróbce
+     * @param filter Filtr pozwalający zawęzić zbiór wydarzeń uwzględnianych w
+     * metodzie {@link main.model.HallEventsDataModel#prepareData()}
      */
     public HallEventsDataModel(Hall hall, EventFilter filter) {
         this.eventList = hall.getEventList();
@@ -48,7 +51,10 @@ public class HallEventsDataModel {
 
     /**
      * Zapisuje sumaryczną ilość zajętych miejsc dla danego wydarzenia w
-     * wewnętrznym kontenerze (HashMapie).
+     * wewnętrznym kontenerze (HashMapie). Uwzględnia przy tym filtrowanie
+     * wydarzeń przy pomocy obiektu
+     * {@link main.model.HallEventsDataModel#filter}. Jeżeli obiekt ten nie
+     * istnieje, wówczas pod uwagę wzięte będą wszystkie wydarzenia.
      */
     private void prepareData() {
         for (Event event : eventList) {
@@ -59,6 +65,9 @@ public class HallEventsDataModel {
         }
     }
 
+    /*
+     * Getters & setters
+     */
     /**
      * Oblicza sumę zajętych miejsc dla danego wydarzenia.
      *
@@ -82,9 +91,6 @@ public class HallEventsDataModel {
         return sum;
     }
 
-    /*
-     * Getters & setters
-     */
     public int getEventCount() {
         return eventCount;
     }

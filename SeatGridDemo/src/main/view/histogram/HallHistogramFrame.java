@@ -38,6 +38,11 @@ public class HallHistogramFrame extends javax.swing.JFrame {
     private HallHistogramPanel histogramPanel;
     private Hall hall;
 
+    /**
+     * Tworzy widok histogramu korzystający z danego kontrolera.
+     *
+     * @param controller Kontroler któremu podlegać ma panel
+     */
     public HallHistogramFrame(HistogramFrameController controller) {
         this.controller = controller;
         initComponents();
@@ -137,18 +142,22 @@ public class HallHistogramFrame extends javax.swing.JFrame {
         pack();
     }
 
-    public void setHistogramPanel(HallHistogramPanel histogramPanel) {
-        contentPanel.removeAll();
-        contentPanel.add(histogramPanel, BorderLayout.CENTER);
-        this.histogramPanel = histogramPanel;
-        pack();
-    }
-
+    /**
+     * Przygotowuje i przekazuje do kontrolera wydarzenia wybrane w widoku.
+     * Stanowi bufor między widokiem a kontrolerem.
+     *
+     * @param evt Obiekt dostarczający informacji o źródle eventu.
+     */
     private void onGenerateHistogramClick(ActionEvent evt) {
         List<Event> selectedEvents = eventList.getSelectedValuesList();
         controller.handleGenerateHistogramClick(this, selectedEvents);
     }
 
+    /**
+     * Przygotowuje i przekazuje do kontrolera wybrany zestaw etykiet osi czasu.
+     *
+     * @param e Obiekt dostarczający informacji o źródle eventu.
+     */
     private void onAxisComboSelect(ItemEvent e) {
         if (e.getStateChange() == ItemEvent.SELECTED) {
             PeriodAxisLabelSet selectedItem = (PeriodAxisLabelSet) e.getItem();
@@ -171,5 +180,17 @@ public class HallHistogramFrame extends javax.swing.JFrame {
 
     public void setHall(Hall hall) {
         this.hall = hall;
+    }
+
+    /**
+     * Zamienia stary (o ile istniał) panel histogramu na nowy.
+     *
+     * @param histogramPanel Nowy panel histogramu do wyświetlenia
+     */
+    public void setHistogramPanel(HallHistogramPanel histogramPanel) {
+        contentPanel.removeAll();
+        contentPanel.add(histogramPanel, BorderLayout.CENTER);
+        this.histogramPanel = histogramPanel;
+        pack();
     }
 }

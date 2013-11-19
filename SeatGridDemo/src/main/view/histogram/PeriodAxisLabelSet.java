@@ -23,7 +23,8 @@ public class PeriodAxisLabelSet {
     public static final PeriodAxisLabelSet DETAILED_LABEL_SET = new PeriodAxisLabelSet(
             Strings.DETAILED_LABEL_SET_NAME,
             new PeriodAxisLabelInfo(Hour.class, new SimpleDateFormat("HH:mm")),
-            new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat("d MMMM yyyy")));
+            new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat(
+            "d MMMM yyyy")));
     /**
      * Daje możliwość łatwej zmiany dokładności opisu osi czasu wykresu na mniej
      * dokładną (co do dnia).
@@ -31,7 +32,8 @@ public class PeriodAxisLabelSet {
     public static final PeriodAxisLabelSet NORMAL_LABEL_SET = new PeriodAxisLabelSet(
             Strings.NORMAL_LABEL_SET_NAME,
             new PeriodAxisLabelInfo(Day.class, new SimpleDateFormat("d")),
-            new PeriodAxisLabelInfo(Month.class, new SimpleDateFormat("MMMM yyyy")));
+            new PeriodAxisLabelInfo(Month.class, new SimpleDateFormat(
+            "MMMM yyyy")));
     /**
      * Daje możliwość łatwej zmiany dokładności opisu osi poziomej wykresu na
      * taką, by pokryła większy przedział czasu (miesiące).
@@ -62,7 +64,7 @@ public class PeriodAxisLabelSet {
         return name;
     }
 
-    PeriodAxisLabelInfo[] getLabelSet() {
+    public PeriodAxisLabelInfo[] getLabelSet() {
         return labelSet;
     }
 

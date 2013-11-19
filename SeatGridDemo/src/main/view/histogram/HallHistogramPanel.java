@@ -28,7 +28,7 @@ public class HallHistogramPanel extends JPanel {
     private XYPlot plot;
 
     /**
-     * Tworzy panel histogramu korzystający z danym kontrolerem.
+     * Tworzy panel histogramu korzystający z danego kontrolera.
      *
      * @param controller Kontroler któremu podlegać ma panel
      */
@@ -105,6 +105,13 @@ public class HallHistogramPanel extends JPanel {
         return controller;
     }
 
+    /**
+     * Na podstawie obiektu {@link main.view.histogram.PeriodAxisLabelSet}
+     * przygotowuje i ustawia {@link org.jfree.chart.axis.PeriodAxis} jako
+     * aktualny {@code DomainAxis}
+     *
+     * @param axisSet Wybrany zestaw etykiet osi czasu
+     */
     public void setAxisLabelSet(PeriodAxisLabelSet axisSet) {
         PeriodAxis periodAxis = new PeriodAxis(Strings.HISTOGRAM_X_AXIS);
         periodAxis.setAutoRange(true);
