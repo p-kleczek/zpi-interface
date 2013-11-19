@@ -3,13 +3,11 @@ package main.view;
 import java.awt.FlowLayout;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import main.controller.HallHistogramFactory;
 import main.model.Hall;
 import main.view.grid.GridPanel;
 import main.util.Log;
@@ -38,21 +36,21 @@ public class MainFrame extends JFrame {
 		setTitle(Strings.TITLE_MAIN);
 		setLayout(new FlowLayout());
 
-		// initialize buttons
-		JButton histogramButton = new JButton(Strings.BUTTON_HISTOGRAM);
-		add(histogramButton);
-		histogramButton.addMouseListener(new MouseAdapter() {
-
-			@Override
-			public void mouseClicked(MouseEvent arg0) {
-				Log.post("histogram button clicked");
-
-				// TODO
-				JFrame histogramFrame = HallHistogramFactory.createFrame(hallList.get(0));
-				histogramFrame.setVisible(true);
-			}
-
-		});
+//		// initialize buttons
+//		JButton histogramButton = new JButton(Strings.BUTTON_HISTOGRAM);
+//		add(histogramButton);
+//		histogramButton.addMouseListener(new MouseAdapter() {
+//
+//			@Override
+//			public void mouseClicked(MouseEvent arg0) {
+//				Log.post("histogram button clicked");
+//
+//				// TODO
+//				JFrame histogramFrame = HallHistogramFactory.createFrame(hallList.get(0));
+//				histogramFrame.setVisible(true);
+//			}
+//
+//		});
 		
 		// initialize buttons
 		JButton gridButton = new JButton(Strings.BUTTON_GRID);
