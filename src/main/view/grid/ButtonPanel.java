@@ -190,7 +190,6 @@ public class ButtonPanel extends JPanel{
                                     gridPanel.getDataModel().setWSP(wspSpin.getValue());
                                     gridPanel.getDataModel().saveToDb();
                                     frame.dispose();
-                                    System.out.println("Ok");
                                     }
                                 }
 			}
