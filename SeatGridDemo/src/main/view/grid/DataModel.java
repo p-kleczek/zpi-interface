@@ -2,18 +2,28 @@ package main.view.grid;
 
 import java.awt.Image;
 import java.awt.Point;
+import java.awt.image.RenderedImage;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 import main.dao.DAO;
 import main.util.Log;
+import main.util.Settings;
+import org.postgresql.largeobject.LargeObject;
+import org.postgresql.largeobject.LargeObjectManager;
 
 /**
  * Dostarcza model danych, na których operują komponenty odpowiedzialne za wyznaczanie siatki na zdjęciu sali
@@ -45,13 +55,51 @@ public class DataModel {
         * Zapisuje wyznaczone dane do bazy danych
         */
 	public void saveToDb(){
-            System.out.println("Zapisywanie danych do bazy");
-            SaveToDb db = new SaveToDb(this);
+            DAO dao = new DAO("postgres", "postgre", "jdbc:postgresql://localhost:5432/zpi_db");
+            Properties settings = dao.getSettings();
+            Connection conn = null;
+            PreparedStatement stmt = null;
+            ResultSet rs = null;
             try {
-                DAO dao = new DAO("postgres", "postgre", "jdbc:postgresql://localhost:5432/zpi_db");
-                dao.executeQuery(db);
+                conn = DriverManager.getConnection((String) settings.get("host"),
+                                (String) settings.get("username").toString(),
+                                (String) settings.get("password"));
+                conn.setAutoCommit(false);
+                
+                String leftTop = "{" + leftTopPoint.x + ", " + leftTopPoint.y + "}";
+                String rightTop =  "{" + rightTopPoint.x + ", " + rightTopPoint.y + "}";
+                String leftBottom = "{" + leftBottomPoint.x + ", " + leftBottomPoint.y + "}";
+                String rightBottom =  "{" + rightBottomPoint.x + ", " + rightBottomPoint.y + "}";
+                String query = "INSERT INTO corners (left_up, right_up, left_down, right_down) VALUES ('" + leftTop + "', '" + rightTop + "', '" + leftBottom + "', '" + rightBottom + "');";
+                stmt = conn.prepareStatement(query);
+                stmt.executeUpdate();
+                
+                query = "SELECT max(id) FROM corners;";
+                stmt = conn.prepareStatement(query);
+                rs = stmt.executeQuery();
+                rs.next();
+                int cornerId = rs.getInt(1);
+                
+                stmt = conn.prepareStatement("INSERT INTO halls (number, rows, columns,corner_id, scale, \"buildingName\") VALUES ('1'," + rows + ", " + cols + ", " +  cornerId + ", " + WSP + ", 'H24');");
+	        stmt.executeUpdate();
+                
             } catch (SQLException ex) {
-                Log.post(ex.getMessage());
+                Logger.getLogger(DataModel.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            finally{
+                try {
+			if (rs != null) {			
+				rs.close();
+			}
+			if (stmt != null) {
+				stmt.close();
+			}
+			if (conn != null) {
+				conn.close();
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}
             }
 	}
 	
